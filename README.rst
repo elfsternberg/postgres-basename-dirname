@@ -13,15 +13,15 @@ Example
 -------
 
 I created these handlers to help with finding nested folders in my music
-catalog program, `Catalogia<http://github.com/elfsternberg/catalogia>_`.
+catalog program, `Catalogia<http://github.com/elfsternberg/catalogia>`.
 
-``SELECT dirname(mp3a.path) AS parent,
-       dirname(mp3b.path) AS child
+.. code-block:: sql
+    SELECT dirname(mp3a.path) AS parent,
+           dirname(mp3b.path) AS child
        FROM catalog_mp3 AS mp3a,
             catalog_mp3 AS mp3b
        WHERE dirname(mp3a.path) != dirname(mp3b.path)                                   
        AND ('^' || dirname(mp3b.path)) ~ dirname(mp3a.path);
-``
 
 By the way, that's *hideously* inefficient, but it worked as a demo!
 
