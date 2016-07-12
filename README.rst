@@ -15,7 +15,8 @@ Example
 I created these handlers to help with finding nested folders in my music
 catalog program, `Catalogia<http://github.com/elfsternberg/catalogia>`.
 
-.. code-block:: sql
+::
+
     SELECT dirname(mp3a.path) AS parent,
            dirname(mp3b.path) AS child
        FROM catalog_mp3 AS mp3a,
