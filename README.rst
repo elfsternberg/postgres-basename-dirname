@@ -17,14 +17,11 @@ catalog program, `Catalogia<http://github.com/elfsternberg/catalogia>`.
 
 ::
 
-    SELECT dirname(mp3a.path) AS parent,
-           dirname(mp3b.path) AS child
-       FROM catalog_mp3 AS mp3a,
-            catalog_mp3 AS mp3b
-       WHERE dirname(mp3a.path) != dirname(mp3b.path)                                   
-       AND ('^' || dirname(mp3b.path)) ~ dirname(mp3a.path);
-
-By the way, that's *hideously* inefficient, but it worked as a demo!
+   WITH prepped_paths AS (SELECT DISTINCT dirname(path) AS dpath FROM catalog_mp3)
+     SELECT a.dpath AS parent, b.dpath AS child
+     FROM prepped_paths AS a, prepped_paths AS b
+     WHERE a.dpath != b.dpath
+     AND a.dpath ~ ('^' || b.dpath);
 
 LICENSE AND COPYRIGHT NOTICE: NO WARRANTY GRANTED OR IMPLIED
 ------------------------------------------------------------
