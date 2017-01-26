@@ -23,6 +23,13 @@ catalog program, `Catalogia<http://github.com/elfsternberg/catalogia>`.
      WHERE a.dpath != b.dpath
      AND a.dpath ~ ('^' || b.dpath);
 
+Status
+------
+
+**July 12, 2016**: This project is **conditionally complete**. No new
+features are being considered, but bug reports will be accepted and
+(eventually) acted upon.
+
 LICENSE AND COPYRIGHT NOTICE: NO WARRANTY GRANTED OR IMPLIED
 ------------------------------------------------------------
 
